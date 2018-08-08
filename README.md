@@ -1,1 +1,1 @@
-# decl-pipe
+# declarative pipeline class repo
