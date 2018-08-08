@@ -8,9 +8,12 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        echo 'building my app still'
+        echo "app is being built by ${MY_NAME}!"
         sh 'java -version'
       }
     }
+  }
+  environment {
+    MY_NAME = 'Mary'
   }
 }
