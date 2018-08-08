@@ -17,6 +17,6 @@ pipeline {
   }
   environment {
     MY_NAME = 'Mary'
-    SONAR = credentials('sonar')
+    SONAR = credentials('adrian')
   }
 }
