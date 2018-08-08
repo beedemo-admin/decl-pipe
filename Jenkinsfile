@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        echo "app is being built by ${MY_NAME}!"
+        echo "app is being built by ${params.Name}!"
         echo "${SONAR_USR}"
         echo "${SONAR_PSW}"
         sh 'java -version'
@@ -18,5 +18,8 @@ pipeline {
   environment {
     MY_NAME = 'Mary'
     SONAR = credentials('test-user')
+  }
+  parameters {
+    string(name: 'Name', defaultValue: 'whoever you are', description: 'Who should I say hi to?')
   }
 }
