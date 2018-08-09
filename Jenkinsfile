@@ -14,24 +14,7 @@ pipeline {
         sh 'java -version'
       }
     }
-    stage('Get Kernel') {
-      steps {
-        script {
-          try {
-            KERNEL_VERSION = sh (script: "uname -r", returnStdout: true)
-          } catch(err) {
-            echo "CAUGHT ERROR: ${err}"
-            throw err
-          }
-        }
-
-      }
-    }
-    stage('Say Kernel') {
-      steps {
-        echo "${KERNEL_VERSION}"
-      }
-    }
+    
     stage('Testing') {
         parallel {
           stage('Java 8') {
@@ -53,18 +36,7 @@ pipeline {
         }
       }
     stage('Deploy') {
-      options {
-        timeout(time: 15, unit: 'SECONDS')
-      }
-      input {
-        message 'Which Version?'
-        id 'Deploy'
-        parameters {
-          choice(name: 'APP_VERSION', choices: '''v1.1
-v1.2
-v1.3''', description: 'What to deploy?')
-        }
-      }
+     
       steps {
         echo "Deploying ${APP_VERSION}."
       }
@@ -74,11 +46,5 @@ v1.3''', description: 'What to deploy?')
     MY_NAME = 'Mary'
     SONAR = credentials('test-user')
   }
-  post {
-    aborted {
-      echo 'Why didn\'t you push my button?'
-
-    }
-
-  }
+ 
 }
