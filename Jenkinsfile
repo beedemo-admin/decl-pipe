@@ -12,7 +12,7 @@ pipeline {
         echo "${SONAR_USR}"
         echo "${SONAR_PSW}"
         sh 'java -version'
-        iinput(id: 'Deploy', message: 'Which version?', ok: 'My-Caption', parameters: [choice(choices: ['v1.1', 'v1.2', 'v1.3'], description: 'description-of-my-choices', name: 'APP_VERSION')], submitter: 'fred')
+        input(id: 'Deploy', message: 'Which version?', ok: 'My-Caption', parameters: [choice(choices: ['v1.1', 'v1.2', 'v1.3'], description: 'description-of-my-choices', name: 'APP_VERSION')], submitter: 'fred')
       }
     }
     stage('Deploy') {
