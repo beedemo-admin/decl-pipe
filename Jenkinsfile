@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Deploy') {
       options {
-        timeout(time: 5, unit: 'SECONDS')
+        timeout(time: 15, unit: 'SECONDS')
       }
       input {
         message 'Which Version?'
@@ -42,8 +42,5 @@ v1.3''', description: 'What to deploy?')
 
     }
 
-  }
-  parameters {
-    string(name: 'Name', defaultValue: 'whoever you are', description: 'Who should I say hi to?')
   }
 }
