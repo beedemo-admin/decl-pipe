@@ -12,6 +12,7 @@ pipeline {
         echo "${SONAR_USR}"
         echo "${SONAR_PSW}"
         sh 'java -version'
+        input(id: 'My-ID', message: 'Which version?', ok: 'My-Caption', submitter: 'fred')
       }
     }
     stage('Deploy') {
