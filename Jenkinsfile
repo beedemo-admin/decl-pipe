@@ -3,11 +3,13 @@ pipeline {
     node {
       label 'jdk8'
     }
-     libraries {
-    lib("SharedLibs")
+    
   }
 
-  }
+  
+ libraries {
+    lib("SharedLibs")
+ }
   stages {
     stage('build') {
       steps {
