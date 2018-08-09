@@ -3,6 +3,9 @@ pipeline {
     node {
       label 'jdk8'
     }
+     libraries {
+    lib("SharedLibs")
+  }
 
   }
   stages {
@@ -15,26 +18,10 @@ pipeline {
       }
     }
     
-    stage('Testing') {
-        parallel {
-          stage('Java 8') {
-            agent { label 'jdk9' }
-            steps {
-              container('maven8') {        // has to exist in the Pod template (defined in Kubernetes cloud config for pod with label jdk9 in OC
-                sh 'mvn -v'
-              }
-            }
-          }
-          stage('Java 9') {
-            agent { label 'jdk8' }
-            steps {
-            
-              container('maven9') {       // has to exist in the Pod template (defined in Kubernetes cloud config in OC with label jdk8 in OC
-                sh 'mvn -v'
-              }
-            }
-          }
-        }
+     stage('Shared Lib') {
+         steps {
+             helloWorld("Jenkins")
+         }
       }
     stage('Deploy') {
      
