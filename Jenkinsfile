@@ -21,7 +21,7 @@ pipeline {
             agent { label 'jdk9' }
             steps {
                 sh 'mvn -v'
-              container('maven8') { .       // has to exist in the Pod template (defined in Kubernetes cloud config for pod with label jdk9 in OC
+              container('maven8') {        // has to exist in the Pod template (defined in Kubernetes cloud config for pod with label jdk9 in OC
                 sh 'mvn -v'
               }
             }
