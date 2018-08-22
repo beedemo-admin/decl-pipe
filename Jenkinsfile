@@ -7,9 +7,7 @@ pipeline {
   }
 
   
- libraries {
-    lib("SharedLibs")
- }
+
   stages {
     stage('build') {
       steps {
@@ -33,7 +31,7 @@ pipeline {
     }
   }
   environment {
-    MY_NAME = 'Mary'
+    MY_NAME = 'adrian'
     SONAR = credentials('test-user')
   }
  
